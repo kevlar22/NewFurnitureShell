@@ -1,0 +1,31 @@
+﻿@model DotNetAppSqlDb.Models.User
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login</title>
+</head>
+<body>
+    
+
+    @using (Html.BeginForm("Login", "UserHome"))
+    {
+        <table cellpadding="2" cellspacing="2">
+            <tr>
+                <td>@Html.LabelFor(Model => Model.userName)</td>
+                <td>@Html.TextBoxFor(Model => Model.userName)</td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td><input type="submit" value="Login" /></td>
+            </tr>
+        </table>
+    }
+
+</body>
+</html>

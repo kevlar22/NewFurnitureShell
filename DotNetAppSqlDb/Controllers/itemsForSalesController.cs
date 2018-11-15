@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -6,119 +6,111 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using DotNetAppSqlDb.Models;using System.Diagnostics;
+using DotNetAppSqlDb.Models;
 
 namespace DotNetAppSqlDb.Controllers
 {
-    public class TodosController : Controller
+    public class itemsForSalesController : Controller
     {
         private MyDatabaseContext db = new MyDatabaseContext();
 
-        // GET: Todos
+        // GET: itemsForSales
         public ActionResult Index()
-        {            
-            Trace.WriteLine("GET /Todos/Index");
-            return View(db.Todoes.ToList());
+        {
+            return View(db.itemsForSales.ToList());
         }
 
-        // GET: Todos/Details/5
+        // GET: itemsForSales/Details/5
         public ActionResult Details(int? id)
         {
-            Trace.WriteLine("GET /Todos/Details/" + id);
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Todo todo = db.Todoes.Find(id);
-            if (todo == null)
+            itemsForSale itemsForSale = db.itemsForSales.Find(id);
+            if (itemsForSale == null)
             {
                 return HttpNotFound();
             }
-            return View(todo);
+            return View(itemsForSale);
         }
 
-        // GET: Todos/Create
+        // GET: itemsForSales/Create
         public ActionResult Create()
         {
-            Trace.WriteLine("GET /Todos/Create");
-            return View(new Todo { CreatedDate = DateTime.Now });
+            return View();
         }
 
-        // POST: Todos/Create
+        // POST: itemsForSales/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Description,CreatedDate")] Todo todo)
+        public ActionResult Create([Bind(Include = "itemID,userID,name,price,description,image,category")] itemsForSale itemsForSale)
         {
-            Trace.WriteLine("POST /Todos/Create");
             if (ModelState.IsValid)
             {
-                db.Todoes.Add(todo);
+                db.itemsForSales.Add(itemsForSale);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(todo);
+            return View(itemsForSale);
         }
 
-        // GET: Todos/Edit/5
+        // GET: itemsForSales/Edit/5
         public ActionResult Edit(int? id)
         {
-            Trace.WriteLine("GET /Todos/Edit/" + id);
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Todo todo = db.Todoes.Find(id);
-            if (todo == null)
+            itemsForSale itemsForSale = db.itemsForSales.Find(id);
+            if (itemsForSale == null)
             {
                 return HttpNotFound();
             }
-            return View(todo);
+            return View(itemsForSale);
         }
 
-        // POST: Todos/Edit/5
+        // POST: itemsForSales/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "id,Description,CreatedDate")] Todo todo)
+        public ActionResult Edit([Bind(Include = "itemID,userID,name,price,description,image,category")] itemsForSale itemsForSale)
         {
-            Trace.WriteLine("POST /Todos/Edit/" + todo.ID);
             if (ModelState.IsValid)
             {
-                db.Entry(todo).State = EntityState.Modified;
+                db.Entry(itemsForSale).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(todo);
+            return View(itemsForSale);
         }
 
-        // GET: Todos/Delete/5
+        // GET: itemsForSales/Delete/5
         public ActionResult Delete(int? id)
         {
-            Trace.WriteLine("GET /Todos/Delete/" + id);
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Todo todo = db.Todoes.Find(id);
-            if (todo == null)
+            itemsForSale itemsForSale = db.itemsForSales.Find(id);
+            if (itemsForSale == null)
             {
                 return HttpNotFound();
             }
-            return View(todo);
+            return View(itemsForSale);
         }
 
-        // POST: Todos/Delete/5
+        // POST: itemsForSales/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Trace.WriteLine("POST /Todos/Delete/" + id);
-            Todo todo = db.Todoes.Find(id);
-            db.Todoes.Remove(todo);
+            itemsForSale itemsForSale = db.itemsForSales.Find(id);
+            db.itemsForSales.Remove(itemsForSale);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
