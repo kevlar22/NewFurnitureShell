@@ -18,7 +18,12 @@ namespace DotNetAppSqlDb.Models
         public MyDatabaseContext() : base("name=MyDbConnection")
         {
         }
+       
 
         public System.Data.Entity.DbSet<DotNetAppSqlDb.Models.Todo> Todoes { get; set; }
+        public DbSet<User> Users { get; set; }
+        public DbSet<address> addresses { get; set; }
+        public DbSet<itemsForSale> itemsForSales { get; set; }
+        public DbSet<itemNeedRequests> itemNeedRequests { get; set; }
     }
 }

@@ -8,18 +8,30 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <!--Navbar Header Start Here-->
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("My TodoList App", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                <a class="navbar-brand" href="#">@Html.ActionLink("Furnitron 3000", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })</a>
+                <a href="#">About Us</a>
+                <a href="#">Technology</a>
+                <a href="#">Contact Us</a>
             </div>
+            <!--Navbar Header End Here-->
+            <!--Menu Start Here-->
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Home</a></li>
+                
+            </ul>
+            <!--Menu End Here-->
         </div>
-    </div>
+    </nav>
+    <!--<nav> tag end-->
+    <!--Default Navbar End Here-->
+    
+
+    
+
     <div class="container body-content">
         @RenderBody()
         <hr />
@@ -27,7 +39,6 @@
             <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
         </footer>
     </div>
-
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
