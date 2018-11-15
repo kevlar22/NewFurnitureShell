@@ -1,6 +1,7 @@
 ﻿using DotNetAppSqlDb.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -17,21 +18,38 @@ namespace DotNetAppSqlDb.Controllers
             return View();
         }
 
-        [HttpPost]
-        public ActionResult Login(User user)
+        
+        public ActionResult UserProfile(User user)
         {
-
-
-            var query = db.Users.Find(user.userName);
-            if (query != null)
+            string userName = user.userName;
+            string l = null;
+            string sql = "SELECT userName FROM Users WHERE userName = @userName";
+            using (SqlConnection conn = new SqlConnection("Data Source=uncc.database.windows.net;Initial Catalog=Moving_App;Persist Security Info=True;User ID=kparso12;Password=Sugarrush1"))
             {
-                Session["username"] = user.userName;
-                return View("UserHome");
+                SqlCommand cmd = new SqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@userName", userName);
+                try
+                {
+                    conn.Open();
+                     l = (string)cmd.ExecuteScalar();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
             }
-            else
-            {
-                return View("Index");
-            }
+            
+                if (l != null)
+                {
+                    Session["username"] = l;
+                    return View("Profile");
+                }
+                else
+                {
+                
+                return RedirectToAction("Index");
+                
+                }
 
             
         }

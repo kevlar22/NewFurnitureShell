@@ -64,6 +64,10 @@
                 @Html.ActionLink("Delete", "Delete", new { id=item.itemID })
             </td>
         </tr>
+        <tr>
+            
+            @Html.ActionLink("Back to Profile", "UserProfile", "UserHome", null, new { User = @Session["username"] });
+        </tr>
     }
     
     </table>

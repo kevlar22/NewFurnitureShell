@@ -144,6 +144,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\itemNeedRequestsController.cs" />
     <Compile Include="Controllers\itemsForSalesController.cs" />
     <Compile Include="Controllers\UserHomeController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
@@ -157,6 +158,10 @@
     <Compile Include="Migrations\201811150241031_kevin.cs" />
     <Compile Include="Migrations\201811150241031_kevin.Designer.cs">
       <DependentUpon>201811150241031_kevin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811151945036_add username andpsswod.cs" />
+    <Compile Include="Migrations\201811151945036_add username andpsswod.Designer.cs">
+      <DependentUpon>201811151945036_add username andpsswod.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\address.cs" />
@@ -264,12 +269,17 @@
     <Content Include="Views\Users\Edit.cshtml" />
     <Content Include="Views\Users\Index.cshtml" />
     <Content Include="Views\UserHome\Index.cshtml" />
-    <Content Include="Views\UserHome\UserHome.cshtml" />
+    <Content Include="Views\UserHome\Profile.cshtml" />
     <Content Include="Views\itemsForSales\Create.cshtml" />
     <Content Include="Views\itemsForSales\Delete.cshtml" />
     <Content Include="Views\itemsForSales\Details.cshtml" />
     <Content Include="Views\itemsForSales\Edit.cshtml" />
     <Content Include="Views\itemsForSales\Index.cshtml" />
+    <Content Include="Views\itemNeedRequests\Create.cshtml" />
+    <Content Include="Views\itemNeedRequests\Delete.cshtml" />
+    <Content Include="Views\itemNeedRequests\Details.cshtml" />
+    <Content Include="Views\itemNeedRequests\Edit.cshtml" />
+    <Content Include="Views\itemNeedRequests\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -289,6 +299,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201811150241031_kevin.resx">
       <DependentUpon>201811150241031_kevin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811151945036_add username andpsswod.resx">
+      <DependentUpon>201811151945036_add username andpsswod.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

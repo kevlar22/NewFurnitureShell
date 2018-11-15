@@ -1,0 +1,58 @@
+﻿@model DotNetAppSqlDb.Models.itemNeedRequests
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>itemNeedRequests</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.userId)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.userId)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.category)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.category)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.minPrice)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.minPrice)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.maxPrice)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.maxPrice)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.requestId }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>

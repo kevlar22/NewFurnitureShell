@@ -13,12 +13,13 @@
 <body>
     
 
-    @using (Html.BeginForm("Login", "UserHome"))
+    @using (Html.BeginForm("UserProfile", "UserHome"))
     {
         <table cellpadding="2" cellspacing="2">
             <tr>
                 <td>@Html.LabelFor(Model => Model.userName)</td>
                 <td>@Html.TextBoxFor(Model => Model.userName)</td>
+                <td>@Html.ValidationMessageFor(Model => Model.userName)</td>
             </tr>
             <tr>
                 <td>&nbsp;</td>

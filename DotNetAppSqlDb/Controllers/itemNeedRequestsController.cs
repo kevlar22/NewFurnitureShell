@@ -10,107 +10,107 @@ using DotNetAppSqlDb.Models;
 
 namespace DotNetAppSqlDb.Controllers
 {
-    public class itemsForSalesController : Controller
+    public class itemNeedRequestsController : Controller
     {
         private MyDatabaseContext db = new MyDatabaseContext();
 
-        // GET: itemsForSales
+        // GET: itemNeedRequests
         public ActionResult Index()
         {
-            return View(db.itemsForSales.ToList());
+            return View(db.itemNeedRequests.ToList());
         }
-       
-        // GET: itemsForSales/Details/5
+
+        // GET: itemNeedRequests/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            itemsForSale itemsForSale = db.itemsForSales.Find(id);
-            if (itemsForSale == null)
+            itemNeedRequests itemNeedRequests = db.itemNeedRequests.Find(id);
+            if (itemNeedRequests == null)
             {
                 return HttpNotFound();
             }
-            return View(itemsForSale);
+            return View(itemNeedRequests);
         }
 
-        // GET: itemsForSales/Create
+        // GET: itemNeedRequests/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: itemsForSales/Create
+        // POST: itemNeedRequests/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "itemID,userID,name,price,description,image,category")] itemsForSale itemsForSale)
+        public ActionResult Create([Bind(Include = "requestId,userId,category,minPrice,maxPrice")] itemNeedRequests itemNeedRequests)
         {
             if (ModelState.IsValid)
             {
-                db.itemsForSales.Add(itemsForSale);
+                db.itemNeedRequests.Add(itemNeedRequests);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(itemsForSale);
+            return View(itemNeedRequests);
         }
 
-        // GET: itemsForSales/Edit/5
+        // GET: itemNeedRequests/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            itemsForSale itemsForSale = db.itemsForSales.Find(id);
-            if (itemsForSale == null)
+            itemNeedRequests itemNeedRequests = db.itemNeedRequests.Find(id);
+            if (itemNeedRequests == null)
             {
                 return HttpNotFound();
             }
-            return View(itemsForSale);
+            return View(itemNeedRequests);
         }
 
-        // POST: itemsForSales/Edit/5
+        // POST: itemNeedRequests/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "itemID,userID,name,price,description,image,category")] itemsForSale itemsForSale)
+        public ActionResult Edit([Bind(Include = "requestId,userId,category,minPrice,maxPrice")] itemNeedRequests itemNeedRequests)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(itemsForSale).State = EntityState.Modified;
+                db.Entry(itemNeedRequests).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(itemsForSale);
+            return View(itemNeedRequests);
         }
 
-        // GET: itemsForSales/Delete/5
+        // GET: itemNeedRequests/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            itemsForSale itemsForSale = db.itemsForSales.Find(id);
-            if (itemsForSale == null)
+            itemNeedRequests itemNeedRequests = db.itemNeedRequests.Find(id);
+            if (itemNeedRequests == null)
             {
                 return HttpNotFound();
             }
-            return View(itemsForSale);
+            return View(itemNeedRequests);
         }
 
-        // POST: itemsForSales/Delete/5
+        // POST: itemNeedRequests/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            itemsForSale itemsForSale = db.itemsForSales.Find(id);
-            db.itemsForSales.Remove(itemsForSale);
+            itemNeedRequests itemNeedRequests = db.itemNeedRequests.Find(id);
+            db.itemNeedRequests.Remove(itemNeedRequests);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

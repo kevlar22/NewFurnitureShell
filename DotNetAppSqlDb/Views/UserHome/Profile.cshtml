@@ -1,0 +1,26 @@
+﻿@model DotNetAppSqlDb.Models.User
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>UserHome</title>
+</head>
+<body>
+    <div>
+        Welcome  @Session["username"];
+        <br />
+        click here to see all users
+        <br />
+        @Html.ActionLink("See all Users", "../Users/Index")
+        <br />
+        <btn>@Html.ActionLink("Items to Sell:","../itemsForSales/Index")</btn>
+        <br />
+        <btn>Add items I want:</btn>
+    </div>
+</body>
+</html>
