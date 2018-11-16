@@ -15,7 +15,7 @@
     <p>
         @Html.ActionLink("Create New", "Create")
     </p>
-    <table class="table">
+    <table cellpadding="4" cellspacing="4">
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.streetAddress)
@@ -34,32 +34,33 @@
             </th>
             <th></th>
         </tr>
-    
-    @foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.streetAddress)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.city)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.state)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.zip)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.aptNum)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id=item.userID }) |
-                @Html.ActionLink("Details", "Details", new { id=item.userID }) |
-                @Html.ActionLink("Delete", "Delete", new { id=item.userID })
-            </td>
-        </tr>
-    }
-    
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.streetAddress)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.city)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.state)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.zip)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.aptNum)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.userID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.userID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.userID })
+                </td>
+            </tr>
+        }
+
     </table>
 </body>
 </html>

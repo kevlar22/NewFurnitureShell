@@ -38,8 +38,26 @@ namespace DotNetAppSqlDb.Controllers
                     Console.WriteLine(ex.Message);
                 }
             }
-            
-                if (l != null)
+
+            string password = user.password;
+            string p = null;
+            string sqlpassword = "SELECT password FROM Users WHERE password = @password";
+            using (SqlConnection conn = new SqlConnection("Data Source=uncc.database.windows.net;Initial Catalog=Moving_App;Persist Security Info=True;User ID=kparso12;Password=Sugarrush1"))
+            {
+                SqlCommand cmd = new SqlCommand(sqlpassword, conn);
+                cmd.Parameters.AddWithValue("@password", password);
+                try
+                {
+                    conn.Open();
+                    p = (string)cmd.ExecuteScalar();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+            }
+
+            if (l != null && p != null)
                 {
                     Session["username"] = l;
                     return View("Profile");

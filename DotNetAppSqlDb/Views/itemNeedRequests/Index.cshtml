@@ -15,9 +15,13 @@
     <p>
         @Html.ActionLink("Create New", "Create")
     </p>
-    <table class="table">
+    <br>
+    <p>
+        What Items do you Need?
+    </p>
+    <table cellpadding="4" cellspacing="4">
         <tr>
-            
+
             <th>
                 @Html.DisplayNameFor(model => model.category)
             </th>
@@ -29,26 +33,27 @@
             </th>
             <th></th>
         </tr>
-    
-    @foreach (var item in Model) {
-        <tr>          
-            <td>
-                @Html.DisplayFor(modelItem => item.category)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.minPrice)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.maxPrice)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id=item.requestId }) |
-                @Html.ActionLink("Details", "Details", new { id=item.requestId }) |
-                @Html.ActionLink("Delete", "Delete", new { id=item.requestId })
-            </td>
-        </tr>
-    }
-    
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.category)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.minPrice)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.maxPrice)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.requestId }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.requestId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.requestId })
+                </td>
+            </tr>
+        }
+
     </table>
 </body>
 </html>
