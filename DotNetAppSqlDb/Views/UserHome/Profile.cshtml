@@ -18,9 +18,11 @@
         <br />
         @Html.ActionLink("See all Users", "../Users/Index")
         <br />
-        <btn>@Html.ActionLink("Items to Sell:","../itemsForSales/Index")</btn>
+        <btn>@Html.ActionLink("Items to Sell:", "../itemsForSales/Index")</btn>
         <br />
-        <btn>Add items I want:</btn>
+        <btn>@Html.ActionLink("Items I want to buy:", "../itemNeedRequests/Index")</btn>
+        <br />
+        <btn>@Html.ActionLink("My Address:", "../addresses/Index")</btn>
     </div>
 </body>
 </html>

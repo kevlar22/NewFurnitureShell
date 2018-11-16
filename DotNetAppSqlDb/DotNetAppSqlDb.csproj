@@ -144,8 +144,10 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\addressesController.cs" />
     <Compile Include="Controllers\itemNeedRequestsController.cs" />
     <Compile Include="Controllers\itemsForSalesController.cs" />
+    <Compile Include="Controllers\MatchesController.cs" />
     <Compile Include="Controllers\UserHomeController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
@@ -165,6 +167,7 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\address.cs" />
+    <Compile Include="Models\buyersForMyFurniture.cs" />
     <Compile Include="Models\itemsForSale.cs" />
     <Compile Include="Models\itemsNeededRequests.cs" />
     <Compile Include="Models\MyDatabaseContext.cs" />
@@ -280,6 +283,12 @@
     <Content Include="Views\itemNeedRequests\Details.cshtml" />
     <Content Include="Views\itemNeedRequests\Edit.cshtml" />
     <Content Include="Views\itemNeedRequests\Index.cshtml" />
+    <Content Include="Views\Matches\View.cshtml" />
+    <Content Include="Views\addresses\Create.cshtml" />
+    <Content Include="Views\addresses\Delete.cshtml" />
+    <Content Include="Views\addresses\Details.cshtml" />
+    <Content Include="Views\addresses\Edit.cshtml" />
+    <Content Include="Views\addresses\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,0 +1,65 @@
+﻿@model IEnumerable<DotNetAppSqlDb.Models.address>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.streetAddress)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.city)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.state)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.zip)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.aptNum)
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.streetAddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.city)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.state)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.zip)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.aptNum)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.userID }) |
+                @Html.ActionLink("Details", "Details", new { id=item.userID }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.userID })
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>
