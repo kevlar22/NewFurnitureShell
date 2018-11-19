@@ -17,5 +17,7 @@ namespace DotNetAppSqlDb.Models
         public DbSet<address> addresses { get; set; }
         public DbSet<itemsForSale> itemsForSales { get; set; }
         public DbSet<itemNeedRequests> itemNeedRequests { get; set; }
+
+        public System.Data.Entity.DbSet<DotNetAppSqlDb.Models.MatchBuyertoSellers_Result> MatchBuyertoSellers_Result { get; set; }
     }
 }

@@ -11,7 +11,7 @@ namespace DotNetAppSqlDb.Controllers
 {
     public class UserHomeController : Controller
     {
-        private MyDatabaseContext db = new MyDatabaseContext();
+        private MyDatabaseContext db = new MyDatabaseContext(); 
         
         public ActionResult Index()
         {
@@ -22,8 +22,8 @@ namespace DotNetAppSqlDb.Controllers
         public ActionResult UserProfile(User user)
         {
             string userName = user.userName;
-            string l = null;
-            string sql = "SELECT userName FROM Users WHERE userName = @userName";
+            int userIDFromDatabase =-1;
+            string sql = "SELECT ID FROM Users WHERE userName = @userName";
             using (SqlConnection conn = new SqlConnection("Data Source=uncc.database.windows.net;Initial Catalog=Moving_App;Persist Security Info=True;User ID=kparso12;Password=Sugarrush1"))
             {
                 SqlCommand cmd = new SqlCommand(sql, conn);
@@ -31,7 +31,7 @@ namespace DotNetAppSqlDb.Controllers
                 try
                 {
                     conn.Open();
-                     l = (string)cmd.ExecuteScalar();
+                     userIDFromDatabase = (int)cmd.ExecuteScalar();
                 }
                 catch (Exception ex)
                 {
@@ -55,11 +55,14 @@ namespace DotNetAppSqlDb.Controllers
                 {
                     Console.WriteLine(ex.Message);
                 }
+
+
             }
 
-            if (l != null && p != null)
+            if (userIDFromDatabase != -1 && p != null)
                 {
-                    Session["username"] = l;
+                    Session["username"] = user.userName;
+                    Session["userID"] = userIDFromDatabase;
                     return View("Profile");
                 }
                 else

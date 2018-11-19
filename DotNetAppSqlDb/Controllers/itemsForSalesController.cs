@@ -15,7 +15,7 @@ namespace DotNetAppSqlDb.Controllers
         private MyDatabaseContext db = new MyDatabaseContext();
 
         // GET: itemsForSales
-        public ActionResult Index()
+        public ActionResult Index(int userid)
         {
             return View(db.itemsForSales.ToList());
         }

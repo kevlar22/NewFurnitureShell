@@ -95,6 +95,8 @@
       <HintPath>..\packages\System.Diagnostics.DiagnosticSource.4.5.0\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
     </Reference>
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -147,6 +149,7 @@
     <Compile Include="Controllers\addressesController.cs" />
     <Compile Include="Controllers\itemNeedRequestsController.cs" />
     <Compile Include="Controllers\itemsForSalesController.cs" />
+    <Compile Include="Controllers\MatchBuyertoSellers_ResultController.cs" />
     <Compile Include="Controllers\MatchesController.cs" />
     <Compile Include="Controllers\UserHomeController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
@@ -165,11 +168,33 @@
     <Compile Include="Migrations\201811151945036_add username andpsswod.Designer.cs">
       <DependentUpon>201811151945036_add username andpsswod.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201811190014518_kparso12.cs" />
+    <Compile Include="Migrations\201811190014518_kparso12.Designer.cs">
+      <DependentUpon>201811190014518_kparso12.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\address.cs" />
     <Compile Include="Models\buyersForMyFurniture.cs" />
     <Compile Include="Models\itemsForSale.cs" />
     <Compile Include="Models\itemsNeededRequests.cs" />
+    <Compile Include="Models\matchBuyertoSellers.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>matchBuyertoSellers.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\matchBuyertoSellers.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>matchBuyertoSellers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\matchBuyertoSellers.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>matchBuyertoSellers.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MatchBuyertoSellers_Result.cs">
+      <DependentUpon>matchBuyertoSellers.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\MyDatabaseContext.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -184,6 +209,16 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Models\matchBuyertoSellers.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>matchBuyertoSellers.edmx</DependentUpon>
+      <LastGenOutput>matchBuyertoSellers.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\matchBuyertoSellers.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>matchBuyertoSellers.edmx</DependentUpon>
+      <LastGenOutput>matchBuyertoSellers.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -209,6 +244,13 @@
     <Content Include="Content\bootstrap-reboot.css.map" />
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
+    <EntityDeploy Include="Models\matchBuyertoSellers.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>matchBuyertoSellers.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\matchBuyertoSellers.edmx.diagram">
+      <DependentUpon>matchBuyertoSellers.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
@@ -289,6 +331,11 @@
     <Content Include="Views\addresses\Details.cshtml" />
     <Content Include="Views\addresses\Edit.cshtml" />
     <Content Include="Views\addresses\Index.cshtml" />
+    <Content Include="Views\MatchBuyertoSellers_Result\Create.cshtml" />
+    <Content Include="Views\MatchBuyertoSellers_Result\Delete.cshtml" />
+    <Content Include="Views\MatchBuyertoSellers_Result\Details.cshtml" />
+    <Content Include="Views\MatchBuyertoSellers_Result\Edit.cshtml" />
+    <Content Include="Views\MatchBuyertoSellers_Result\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -301,6 +348,7 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201811150151337_InitialCreate.resx">
@@ -311,6 +359,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201811151945036_add username andpsswod.resx">
       <DependentUpon>201811151945036_add username andpsswod.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811190014518_kparso12.resx">
+      <DependentUpon>201811190014518_kparso12.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
