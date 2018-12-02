@@ -174,7 +174,6 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\address.cs" />
-    <Compile Include="Models\buyersForMyFurniture.cs" />
     <Compile Include="Models\itemsForSale.cs" />
     <Compile Include="Models\itemsNeededRequests.cs" />
     <Compile Include="Models\matchBuyertoSellers.Context.cs">
@@ -288,15 +287,6 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Todos\Create.cshtml" />
-    <Content Include="Views\Todos\Delete.cshtml" />
-    <Content Include="Views\Todos\Details.cshtml" />
-    <Content Include="Views\Todos\Edit.cshtml" />
-    <Content Include="Views\Todos\Index.cshtml" />
-    <Content Include="Views\TodosDone\Create.cshtml" />
-    <Content Include="Views\TodosDone\Details.cshtml" />
-    <Content Include="Views\TodosDone\Edit.cshtml" />
-    <Content Include="Views\TodosDone\Index.cshtml" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
     <Content Include="Scripts\umd\popper.min.js.map" />

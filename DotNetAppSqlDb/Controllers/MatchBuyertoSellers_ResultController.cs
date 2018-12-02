@@ -17,6 +17,7 @@ namespace DotNetAppSqlDb.Controllers
         // GET: MatchBuyertoSellers_Result
         public ActionResult Index()
         {
+
             return View(db.MatchBuyertoSellers_Result.ToList());
         }
 
