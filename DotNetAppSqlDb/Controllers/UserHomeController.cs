@@ -24,7 +24,7 @@ namespace DotNetAppSqlDb.Controllers
             string userName = user.userName;
             int userIDFromDatabase =-1;
             string sql = "SELECT ID FROM Users WHERE userName = @userName";
-            using (SqlConnection conn = new SqlConnection("Data Source=uncc.database.windows.net;Initial Catalog=Moving_App;Persist Security Info=True;User ID=kparso12;Password=Sugarrush1"))
+            using (SqlConnection conn = new SqlConnection("Data Source=uncc.database.windows.net;Initial Catalog=uncc.Moving_App.dbo;Persist Security Info=True;User ID=kparso12;Password=Sugarrush1"))
             {
                 SqlCommand cmd = new SqlCommand(sql, conn);
                 cmd.Parameters.AddWithValue("@userName", userName);
@@ -42,7 +42,7 @@ namespace DotNetAppSqlDb.Controllers
             string password = user.password;
             string p = null;
             string sqlpassword = "SELECT password FROM Users WHERE password = @password";
-            using (SqlConnection conn = new SqlConnection("Data Source=uncc.database.windows.net;Initial Catalog=Moving_App;Persist Security Info=True;User ID=kparso12;Password=Sugarrush1"))
+            using (SqlConnection conn = new SqlConnection("Data Source=uncc.database.windows.net;Initial Catalog=uncc.Moving_App.dbo;Persist Security Info=True;User ID=kparso12;Password=Sugarrush1"))
             {
                 SqlCommand cmd = new SqlCommand(sqlpassword, conn);
                 cmd.Parameters.AddWithValue("@password", password);

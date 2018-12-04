@@ -9,7 +9,7 @@ namespace DotNetAppSqlDb.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
             ContextKey = "DotNetAppSqlDb.Models.MyDatabaseContext";
         }
 

@@ -9,6 +9,7 @@ namespace DotNetAppSqlDb.Models
     public class address
     {
         [Key]
+        public int addressID { get; set; }
         public string userID { get; set; }
         public string streetAddress { get; set; }
         public string city { get; set; }

@@ -15,9 +15,15 @@ namespace DotNetAppSqlDb.Controllers
         private MyDatabaseContext db = new MyDatabaseContext();
 
         // GET: itemsForSales
-        public ActionResult Index(int userid)
+        public ActionResult Index()
         {
-            return View(db.itemsForSales.ToList());
+            int userID = (int)Session["userID"];
+            string userIDString = userID.ToString();
+            var query = db.ITEMS_FOR_SALE
+                       .Where(a => a.userID == userID)
+                       .ToList();
+            return View(query);
+            
         }
        
         // GET: itemsForSales/Details/5
@@ -27,7 +33,7 @@ namespace DotNetAppSqlDb.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            itemsForSale itemsForSale = db.itemsForSales.Find(id);
+            itemsForSale itemsForSale = db.ITEMS_FOR_SALE.Find(id);
             if (itemsForSale == null)
             {
                 return HttpNotFound();
@@ -47,11 +53,12 @@ namespace DotNetAppSqlDb.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "itemID,userID,name,price,description,image,category")] itemsForSale itemsForSale)
+        public ActionResult Create([Bind(Include = "itemID, userID, category,price,name,description,image")] itemsForSale itemsForSale)
+            
         {
             if (ModelState.IsValid)
             {
-                db.itemsForSales.Add(itemsForSale);
+                db.ITEMS_FOR_SALE.Add(itemsForSale);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -66,7 +73,7 @@ namespace DotNetAppSqlDb.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            itemsForSale itemsForSale = db.itemsForSales.Find(id);
+            itemsForSale itemsForSale = db.ITEMS_FOR_SALE.Find(id);
             if (itemsForSale == null)
             {
                 return HttpNotFound();
@@ -95,7 +102,7 @@ namespace DotNetAppSqlDb.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            itemsForSale itemsForSale = db.itemsForSales.Find(id);
+            itemsForSale itemsForSale = db.ITEMS_FOR_SALE.Find(id);
             if (itemsForSale == null)
             {
                 return HttpNotFound();
@@ -108,8 +115,8 @@ namespace DotNetAppSqlDb.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            itemsForSale itemsForSale = db.itemsForSales.Find(id);
-            db.itemsForSales.Remove(itemsForSale);
+            itemsForSale itemsForSale = db.ITEMS_FOR_SALE.Find(id);
+            db.ITEMS_FOR_SALE.Remove(itemsForSale);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
