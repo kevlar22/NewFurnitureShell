@@ -10,112 +10,107 @@ using DotNetAppSqlDb.Models;
 
 namespace DotNetAppSqlDb.Controllers
 {
-    public class addressesController : Controller
+    public class MatchBuyertoSellers_ResultController : Controller
     {
         private MyDatabaseContext db = new MyDatabaseContext();
 
-        // GET: addresses
+        // GET: MatchBuyertoSellers_Result
         public ActionResult Index()
         {
-            int userID = (int)Session["userID"];
-            string userIDString = userID.ToString();
-            var query = db.addresses
-                       .Where(a => a.userID == userIDString)
-                       .ToList<address>();
-            return View(query);
+            return View(db.MatchBuyertoSellers_Result.ToList());
         }
 
-        // GET: addresses/Details/5
-        public ActionResult Details(string id)
+        // GET: MatchBuyertoSellers_Result/Details/5
+        public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            address address = db.addresses.Find(id);
-            if (address == null)
+            MatchBuyertoSellers_Result matchBuyertoSellers_Result = db.MatchBuyertoSellers_Result.Find(id);
+            if (matchBuyertoSellers_Result == null)
             {
                 return HttpNotFound();
             }
-            return View(address);
+            return View(matchBuyertoSellers_Result);
         }
 
-        // GET: addresses/Create
+        // GET: MatchBuyertoSellers_Result/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: addresses/Create
+        // POST: MatchBuyertoSellers_Result/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "userID,streetAddress,city,state,zip,aptNum")] address address)
+        public ActionResult Create([Bind(Include = "itemID,sellerID,userID,name,price,description,image,category,buyerID,buyerFirst")] MatchBuyertoSellers_Result matchBuyertoSellers_Result)
         {
             if (ModelState.IsValid)
             {
-                db.addresses.Add(address);
+                db.MatchBuyertoSellers_Result.Add(matchBuyertoSellers_Result);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(address);
+            return View(matchBuyertoSellers_Result);
         }
 
-        // GET: addresses/Edit/5
-        public ActionResult Edit(string id)
+        // GET: MatchBuyertoSellers_Result/Edit/5
+        public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            address address = db.addresses.Find(id);
-            if (address == null)
+            MatchBuyertoSellers_Result matchBuyertoSellers_Result = db.MatchBuyertoSellers_Result.Find(id);
+            if (matchBuyertoSellers_Result == null)
             {
                 return HttpNotFound();
             }
-            return View(address);
+            return View(matchBuyertoSellers_Result);
         }
 
-        // POST: addresses/Edit/5
+        // POST: MatchBuyertoSellers_Result/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "userID,streetAddress,city,state,zip,aptNum")] address address)
+        public ActionResult Edit([Bind(Include = "itemID,sellerID,userID,name,price,description,image,category,buyerID,buyerFirst")] MatchBuyertoSellers_Result matchBuyertoSellers_Result)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(address).State = EntityState.Modified;
+                db.Entry(matchBuyertoSellers_Result).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(address);
+            return View(matchBuyertoSellers_Result);
         }
 
-        // GET: addresses/Delete/5
-        public ActionResult Delete(string id)
+        // GET: MatchBuyertoSellers_Result/Delete/5
+        public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            address address = db.addresses.Find(id);
-            if (address == null)
+            MatchBuyertoSellers_Result matchBuyertoSellers_Result = db.MatchBuyertoSellers_Result.Find(id);
+            if (matchBuyertoSellers_Result == null)
             {
                 return HttpNotFound();
             }
-            return View(address);
+            return View(matchBuyertoSellers_Result);
         }
 
-        // POST: addresses/Delete/5
+        // POST: MatchBuyertoSellers_Result/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(string id)
+        public ActionResult DeleteConfirmed(int id)
         {
-            address address = db.addresses.Find(id);
-            db.addresses.Remove(address);
+            MatchBuyertoSellers_Result matchBuyertoSellers_Result = db.MatchBuyertoSellers_Result.Find(id);
+            db.MatchBuyertoSellers_Result.Remove(matchBuyertoSellers_Result);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

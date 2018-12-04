@@ -12,17 +12,19 @@
 </head>
 <body>
     <div>
-        Welcome  @Session["username"];
+        Welcome  @Session["username"]
         <br />
         Main Menu:
         <br />
-        
+
         <br />
-        <btn>@Html.ActionLink("Items to Sell:", "../itemsForSales/Index")</btn>
+        <btn>@Html.ActionLink("Items to Sell:", "../itemsForSales/Index", Session["userID"])</btn>
         <br />
-        <btn>@Html.ActionLink("Items I want to buy:", "../itemNeedRequests/Index")</btn>
+        <btn>@Html.ActionLink("Items I want to buy:", "../itemNeedRequests/Index", Session["userID"])</btn>
         <br />
-        <btn>@Html.ActionLink("My Address:", "../addresses/Index")</btn>
+        <btn>@Html.ActionLink("My Address:", "../addresses/Index", @Session["userID"])</btn>
+        <br />
+        <btn>@Html.ActionLink("Matches:", "../MatchBuyertoSellers_Result/Index")</btn>
     </div>
 </body>
 </html>
