@@ -9,12 +9,12 @@ namespace DotNetAppSqlDb.Models
     public class address
     {
         [Key]
-        public int addressID { get; set; }
-        public string userID { get; set; }
-        public string streetAddress { get; set; }
-        public string city { get; set; }
-        public string state { get; set; }
-        public int zip { get; set; }
-        public string aptNum { get; set; }
+        public int Address_ID { get; set; }
+        public int User_ID { get; set; }
+        public string Street { get; set; }
+        public string City { get; set; }
+        public string State { get; set; }
+        public int Zip { get; set; }
+        public string Apt_num { get; set; }
     }
 }

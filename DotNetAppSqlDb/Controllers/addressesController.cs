@@ -15,13 +15,13 @@ namespace DotNetAppSqlDb.Controllers
         private MyDatabaseContext db = new MyDatabaseContext();
 
         // GET: addresses
-        public ActionResult Index()
+        public ActionResult Index(string id)
         {
             int userID = (int)Session["userID"];
-            string userIDString = userID.ToString();
+            
             var query = db.addresses
-                       .Where(a => a.userID == userIDString)
-                       .ToList<address>();
+                       .Where(a => a.User_ID == userID)
+                       .ToList();
             return View(query);
         }
 
@@ -51,10 +51,12 @@ namespace DotNetAppSqlDb.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "userID,streetAddress,city,state,zip,aptNum")] address address)
+        public ActionResult Create([Bind(Include = "Address_ID,User_ID,Street,City,State,Zip,Apt_num")] address address)
         {
             if (ModelState.IsValid)
             {
+                
+                address.User_ID = (int)@Session["userID"];
                 db.addresses.Add(address);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -64,7 +66,7 @@ namespace DotNetAppSqlDb.Controllers
         }
 
         // GET: addresses/Edit/5
-        public ActionResult Edit(string id)
+        public ActionResult Edit(int id)
         {
             if (id == null)
             {
@@ -83,7 +85,7 @@ namespace DotNetAppSqlDb.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "userID,streetAddress,city,state,zip,aptNum")] address address)
+        public ActionResult Edit([Bind(Include = "Address_ID,User_ID,Street,City,State,Zip,Apt_num")] address address)
         {
             if (ModelState.IsValid)
             {
@@ -95,7 +97,7 @@ namespace DotNetAppSqlDb.Controllers
         }
 
         // GET: addresses/Delete/5
-        public ActionResult Delete(string id)
+        public ActionResult Delete(int id)
         {
             if (id == null)
             {
@@ -112,7 +114,7 @@ namespace DotNetAppSqlDb.Controllers
         // POST: addresses/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(string id)
+        public ActionResult DeleteConfirmed(int id)
         {
             address address = db.addresses.Find(id);
             db.addresses.Remove(address);
