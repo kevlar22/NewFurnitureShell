@@ -1,4 +1,4 @@
-﻿@model IEnumerable<DotNetAppSqlDb.Models.address>
+﻿@model IEnumerable<DotNetAppSqlDb.Models.Address>
 
 @{
     Layout = null;
@@ -54,13 +54,15 @@
                     @Html.DisplayFor(modelItem => item.Apt_num)
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.User_ID }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.User_ID }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.User_ID })
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Address_ID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Address_ID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Address_ID })
+
                 </td>
             </tr>
         }
 
     </table>
+    <btn>@Html.ActionLink("Back to Main Menu", "../UserHome/BacktoMenu", @Session["userID"])</btn>
 </body>
 </html>

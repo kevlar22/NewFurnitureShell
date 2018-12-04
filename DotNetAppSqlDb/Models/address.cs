@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
 namespace DotNetAppSqlDb.Models
 {
-    public class address
+    [Table("dbo.Address")]
+    public class Address
     {
         [Key]
         public int Address_ID { get; set; }

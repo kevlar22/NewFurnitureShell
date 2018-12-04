@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -15,24 +16,29 @@ namespace DotNetAppSqlDb.Controllers
         private MyDatabaseContext db = new MyDatabaseContext();
 
         // GET: addresses
-        public ActionResult Index(string id)
+        public async System.Threading.Tasks.Task<ActionResult> Index(string id)
         {
-            int userID = (int)Session["userID"];
+          int userID = (int)Session["userID"];
             
-            var query = db.addresses
-                       .Where(a => a.User_ID == userID)
-                       .ToList();
-            return View(query);
+
+
+                SqlParameter parameter = new SqlParameter("@User_ID", userID);
+                List<Address> addresses = await db.addresses.SqlQuery("GetAllAddresses @User_ID", parameter).ToListAsync();
+            
+                //var query = db.addresses
+                //       .Where(a => a.User_ID == userID)
+                //       .ToList();
+            return View(addresses);
         }
 
         // GET: addresses/Details/5
-        public ActionResult Details(string id)
+        public ActionResult Details(int id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            address address = db.addresses.Find(id);
+            Address address = db.addresses.Find(id);
             if (address == null)
             {
                 return HttpNotFound();
@@ -51,7 +57,7 @@ namespace DotNetAppSqlDb.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Address_ID,User_ID,Street,City,State,Zip,Apt_num")] address address)
+        public ActionResult Create([Bind(Include = "Address_ID,User_ID,Street,City,State,Zip,Apt_num")] Address address)
         {
             if (ModelState.IsValid)
             {
@@ -72,7 +78,7 @@ namespace DotNetAppSqlDb.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            address address = db.addresses.Find(id);
+            Address address = db.addresses.Find(id);
             if (address == null)
             {
                 return HttpNotFound();
@@ -85,7 +91,7 @@ namespace DotNetAppSqlDb.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Address_ID,User_ID,Street,City,State,Zip,Apt_num")] address address)
+        public ActionResult Edit([Bind(Include = "Address_ID,User_ID,Street,City,State,Zip,Apt_num")] Address address)
         {
             if (ModelState.IsValid)
             {
@@ -103,7 +109,7 @@ namespace DotNetAppSqlDb.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            address address = db.addresses.Find(id);
+            Address address = db.addresses.Find(id);
             if (address == null)
             {
                 return HttpNotFound();
@@ -116,7 +122,7 @@ namespace DotNetAppSqlDb.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            address address = db.addresses.Find(id);
+            Address address = db.addresses.Find(id);
             db.addresses.Remove(address);
             db.SaveChanges();
             return RedirectToAction("Index");

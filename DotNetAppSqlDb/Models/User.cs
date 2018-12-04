@@ -21,7 +21,7 @@ namespace DotNetAppSqlDb.Models
         //[DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         //public DateTime CreatedDate { get; set; }
 
-        public ICollection<address> addresses { get; set; }
+        public ICollection<Address> addresses { get; set; }
         public ICollection<itemsForSale> itemsForSales { get; set; }
         public ICollection<itemNeedRequests> itemNeedRequests { get; set; }
     }

@@ -5,7 +5,9 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-
+using System.Data;
+using System.Data.Common;
+using System.Configuration;
 
 namespace DotNetAppSqlDb.Controllers
 {
@@ -24,7 +26,8 @@ namespace DotNetAppSqlDb.Controllers
             string userName = user.userName;
             int userIDFromDatabase =-1;
             string sql = "SELECT ID FROM Users WHERE userName = @userName";
-            using (SqlConnection conn = new SqlConnection("Data Source=uncc.database.windows.net;Initial Catalog=uncc.Moving_App.dbo;Persist Security Info=True;User ID=kparso12;Password=Sugarrush1"))
+            string sqlConnection = ConfigurationManager.ConnectionStrings["MyDbConnection"].ConnectionString;
+            using (SqlConnection conn = new SqlConnection(sqlConnection))
             {
                 SqlCommand cmd = new SqlCommand(sql, conn);
                 cmd.Parameters.AddWithValue("@userName", userName);
@@ -75,7 +78,10 @@ namespace DotNetAppSqlDb.Controllers
             
         }
 
-       
+        public ActionResult BacktoMenu()
+        {
+            return View("Profile");
+        }
 
     }
 }
