@@ -14,5 +14,6 @@ namespace DotNetAppSqlDb.Models
         public string category { get; set; }
         public int minPrice { get; set; }
         public int maxPrice { get; set; }
+        public IEnumerable<Address> buyAddress { get; set; }
     }
 }

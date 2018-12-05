@@ -58,6 +58,7 @@ namespace DotNetAppSqlDb.Controllers
         {
             if (ModelState.IsValid)
             {
+                itemsForSale.userID = (int)Session["userID"];
                 db.ITEMS_FOR_SALE.Add(itemsForSale);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -88,6 +89,7 @@ namespace DotNetAppSqlDb.Controllers
         {
             if (ModelState.IsValid)
             {
+                itemsForSale.userID = (int)Session["userID"];
                 db.Entry(itemsForSale).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

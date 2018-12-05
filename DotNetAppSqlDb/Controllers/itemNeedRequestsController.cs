@@ -50,6 +50,7 @@ namespace DotNetAppSqlDb.Controllers
         {
             if (ModelState.IsValid)
             {
+                itemNeedRequests.userId = (int)Session["userID"];
                 db.itemNeedRequests.Add(itemNeedRequests);
                 db.SaveChanges();
                 return RedirectToAction("Index");

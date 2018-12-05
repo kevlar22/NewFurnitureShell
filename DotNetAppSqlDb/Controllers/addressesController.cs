@@ -20,7 +20,7 @@ namespace DotNetAppSqlDb.Controllers
         {
           int userID = (int)Session["userID"];
             
-
+            
 
                 SqlParameter parameter = new SqlParameter("@User_ID", userID);
                 List<Address> addresses = await db.addresses.SqlQuery("GetAllAddresses @User_ID", parameter).ToListAsync();

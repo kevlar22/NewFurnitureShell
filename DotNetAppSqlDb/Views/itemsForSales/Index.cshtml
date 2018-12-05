@@ -19,58 +19,59 @@
     <p>
         What items would you like to sell?
     </p>
-    
-                <br />
-                <table cellpadding="4" cellspacing="4">
-                    <th>
-                        @Html.DisplayNameFor(model => model.name)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.price)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.description)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.image)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.category)
-                    </th>
-                    <th></th>
-                    </tr>
 
-                    @foreach (var item in Model)
-                    {
-                        <tr>
-                      
-                            <td>
-                                @Html.DisplayFor(modelItem => item.name)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.price)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.description)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.image)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.category)
-                            </td>
-                            <td>
-                                @Html.ActionLink("Edit", "Edit", new { id = item.itemID }) |
-                                @Html.ActionLink("Details", "Details", new { id = item.itemID }) |
-                                @Html.ActionLink("Delete", "Delete", new { id = item.itemID })
-                            </td>
-                        </tr>
-                        <tr>
+    <br />
+    <table cellpadding="4" cellspacing="4">
+        <th>
+            @Html.DisplayNameFor(model => model.name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.image)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.category)
+        </th>
+        <th></th>
+        </tr>
 
-                            @Html.ActionLink("Back to Profile", "UserProfile", "UserHome", null, new { User = @Session["username"] });
-                        </tr>
-                    }
+        @foreach (var item in Model)
+        {
+            <tr>
 
-                </table>
+                <td>
+                    @Html.DisplayFor(modelItem => item.name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.image)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.category)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.itemID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.itemID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.itemID })
+                </td>
+            </tr>
+            <tr>
+
+               
+            </tr>
+        }
+
+    </table>
+    <btn>@Html.ActionLink("Back to Main Menu", "../UserHome/BacktoMenu", @Session["userID"])</btn>
 </body>
 </html>

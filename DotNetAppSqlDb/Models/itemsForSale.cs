@@ -16,5 +16,7 @@ namespace DotNetAppSqlDb.Models
         public string description { get; set; }
         public string image { get; set; }
         public string category { get; set; }
+        public IEnumerable<Address> salesAddress { get; set; }
     }
+    
 }
