@@ -46,13 +46,13 @@ namespace DotNetAppSqlDb.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,userName,firstName,lastName")] User user)
+        public ActionResult Create([Bind(Include = "ID,userName,password,firstName,lastName")] User user)
         {
             if (ModelState.IsValid)
             {
                 db.Users.Add(user);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index","UserHome");
             }
 
             return View(user);
