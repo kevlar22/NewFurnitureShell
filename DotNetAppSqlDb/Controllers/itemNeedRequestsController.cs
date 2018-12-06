@@ -17,7 +17,12 @@ namespace DotNetAppSqlDb.Controllers
         // GET: itemNeedRequests
         public ActionResult Index()
         {
-            return View(db.itemNeedRequests.ToList());
+            int userID = (int)Session["userID"];
+            string userIDString = userID.ToString();
+            var query = db.ITEMS_FOR_SALE
+                       .Where(a => a.userID == userID)
+                       .ToList();
+            return View(query);
         }
 
         // GET: itemNeedRequests/Details/5

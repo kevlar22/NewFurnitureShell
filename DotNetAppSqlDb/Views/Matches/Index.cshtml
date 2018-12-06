@@ -1,0 +1,89 @@
+﻿@model IEnumerable<DotNetAppSqlDb.Models.Matches>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.sellerName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.itemForSaleName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.salePrice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.sellingCategory)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.image)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.buyerID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.requestID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.sellerID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.itemID)
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.sellerName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.itemForSaleName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.salePrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.sellingCategory)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.image)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.buyerID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.requestID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.sellerID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.itemID)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.matchID }) |
+                @Html.ActionLink("Details", "Details", new { id=item.matchID }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.matchID })
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>

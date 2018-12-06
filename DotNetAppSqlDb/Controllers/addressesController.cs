@@ -23,12 +23,12 @@ namespace DotNetAppSqlDb.Controllers
             
 
                 SqlParameter parameter = new SqlParameter("@User_ID", userID);
-                List<Address> addresses = await db.addresses.SqlQuery("GetAllAddresses @User_ID", parameter).ToListAsync();
-            
+                Address address = await db.addresses.SqlQuery("GetAllAddresses @User_ID", parameter).SingleAsync();
+                 Session["zip"] = address.Zip.ToString();
                 //var query = db.addresses
                 //       .Where(a => a.User_ID == userID)
                 //       .ToList();
-            return View(addresses);
+            return View(address);
         }
 
         // GET: addresses/Details/5
