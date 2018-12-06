@@ -1,41 +1,28 @@
 ﻿@model DotNetAppSqlDb.Models.User
-@{
-    Layout = null;
-}
-
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Login</title>
-</head>
+@{	Layout = "~/Views/Shared/LoginNav.cshtml ";	}
+@{	ViewBag.Title = "Login";	}
 <body>
-    
-
-    @using (Html.BeginForm("UserProfile", "UserHome"))
+	</br>
+    @using (Html.BeginForm("UserProfile", "UserHome", FormMethod.Post,
+				new {@class="form-group"}))
     {
     <table cellpadding="2" cellspacing="2">
         <tr>
-            <td>@Html.LabelFor(Model => Model.userName)</td>
-            <td>@Html.TextBoxFor(Model => Model.userName)</td>
+            <td>@Html.TextBoxFor(Model => Model.userName, new {@class="form-control", @placeholder="Username"})</td>
             <td>@Html.ValidationMessageFor(Model => Model.userName)</td>
         </tr>
         <tr>
-            <td>@Html.LabelFor(Model => Model.password)</td>
-            <td>@Html.TextBoxFor(Model => Model.password)</td>
+            <td>@Html.TextBoxFor(Model => Model.password, new {@class="form-control", @placeholder="Password"})</td>
             <td>@Html.ValidationMessageFor(Model => Model.password)</td>
         </tr>
-        <tr>
-            <td>&nbsp;</td>
-            <td><input type="submit" value="Login" /></td>
+        <tr>          
+			<td><button type="submit" class="btn btn-danger">Login</button>
         </tr>
     </table>
     }
     <div>
-        CLICK HERE TO CREATE AN ACCOUNT
-        <btn>@Html.ActionLink("Register", "../Users/Create", @Session["userID"])</btn>
+        <btn>@Html.ActionLink("Click Here to Register", "../Users/Create", @Session["userID"], 
+			new {@class="btn btn-danger"})</btn>
     </div>
 
 </body>
-</html>
