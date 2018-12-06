@@ -1,6 +1,16 @@
 ﻿@model DotNetAppSqlDb.Models.itemNeedRequests
-@{	Layout = "~/Views/Shared/_Layout.cshtml ";	}
-@{	ViewBag.Title = "Edit";	}
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Edit</title>
+</head>
 <body>
     @using (Html.BeginForm())
     {
@@ -50,3 +60,4 @@
         @Html.ActionLink("Back to List", "Index")
     </div>
 </body>
+</html>

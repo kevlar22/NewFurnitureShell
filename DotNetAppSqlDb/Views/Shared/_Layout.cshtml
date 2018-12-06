@@ -3,41 +3,44 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title</title>
+    <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
-<header>
-    <nav class="navbar navbar-expanded-lg navbar-dark bg-danger">
-
+<body>
+    <nav class="navbar navbar-default">
         <div class="container-fluid">
             <!--Navbar Header Start Here-->
             <div class="navbar-header">
-                <a class="navbar-brand" href="#">@Html.ActionLink("Send It", "Index", "UserHome", new { area = "" }, new { @class = "navbar-brand" })</a>
-                <a href="#">@Html.ActionLink("Profile", "../UserHome/BacktoMenu", @Session["userID"])</a>
-                <a href="#"></a>
-                <a href="#"></a>
+                <a class="navbar-brand" href="#">@Html.ActionLink("Furnitron 3000", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })</a>
+                <a href="#">About Us</a>
+                <a href="#">Technology</a>
+                <a href="#">Contact Us</a>
             </div>
-			<form class="form-inline my-2 my-lg-0">
-				<input class="form-control mr-sm-2" type="text" placeholder="Search">
-			</form>
+            <!--Navbar Header End Here-->
             <!--Menu Start Here-->
             <ul class="nav navbar-nav">
                 <li class="active"><a href="#">Home</a></li>
+                
+            </ul>
+            <!--Menu End Here-->
         </div>
     </nav>
-</header>
-<body>
+    <!--<nav> tag end-->
+    <!--Default Navbar End Here-->
+    
+
+    
+
     <div class="container body-content">
         @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
     </div>
-
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 </body>
-	<hr />
-	<footer>
-       <p>&nbsp; &nbsp; &copy; @DateTime.Now.Year - Send It</p>
-    </footer>
 </html>

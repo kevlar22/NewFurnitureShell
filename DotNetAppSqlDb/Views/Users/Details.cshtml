@@ -1,7 +1,9 @@
 ﻿@model DotNetAppSqlDb.Models.User
-@{	Layout = "~/Views/Shared/_Layout.cshtml ";	}
-@{	ViewBag.Title = "Details";	}
-<body>
+
+@{
+    ViewBag.Title = "Details";
+}
+
 <h2>Details</h2>
 
 <div>
@@ -38,4 +40,3 @@
     @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
-</body>
