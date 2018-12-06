@@ -19,5 +19,6 @@ namespace DotNetAppSqlDb.Models
         public int requestID { get; set; }
         public int sellerID { get; set; }
         public int itemID { get; set; }
+        public int zip { get; set; }
     }
 }

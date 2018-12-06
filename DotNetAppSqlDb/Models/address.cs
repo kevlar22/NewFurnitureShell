@@ -7,7 +7,7 @@ using System.Web;
 
 namespace DotNetAppSqlDb.Models
 {
-    [Table("dbo.Address")]
+    
     public class Address
     {
         [Key]

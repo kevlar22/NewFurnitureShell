@@ -15,7 +15,7 @@ namespace DotNetAppSqlDb.Models
       
         public DbSet<User> Users { get; set; }
         public DbSet<Address> addresses { get; set; }
-        public DbSet<itemsForSale> ITEMS_FOR_SALE { get; set; }
+        public DbSet<itemsForSale> ITEMS_FOR_SALEs { get; set; }
         public DbSet<itemNeedRequests> itemNeedRequests { get; set; }
         public DbSet<Matches> Matches { get; set; }
 

@@ -19,16 +19,16 @@ namespace DotNetAppSqlDb.Controllers
         public async System.Threading.Tasks.Task<ActionResult> Index(string id)
         {
           int userID = (int)Session["userID"];
-            
-            
 
-                SqlParameter parameter = new SqlParameter("@User_ID", userID);
-                Address address = await db.addresses.SqlQuery("GetAllAddresses @User_ID", parameter).SingleAsync();
-                 Session["zip"] = address.Zip.ToString();
-                //var query = db.addresses
-                //       .Where(a => a.User_ID == userID)
-                //       .ToList();
-            return View(address);
+
+
+            //SqlParameter parameter = new SqlParameter("@User_ID", userID);
+            //Address address = await db.addresses.SqlQuery("GetAllAddresses @User_ID", parameter).SingleAsync();
+            // Session["zip"] = address.Zip.ToString();
+            var query = db.addresses
+                   .Where(a => a.User_ID == userID)
+                   .ToList();
+            return View(query);
         }
 
         // GET: addresses/Details/5

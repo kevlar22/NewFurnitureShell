@@ -66,7 +66,8 @@ namespace DotNetAppSqlDb.Controllers
                 {
                     Session["username"] = user.userName;
                     Session["userID"] = userIDFromDatabase;
-                    return View("Profile");
+                    Session["zip"] = "1";
+                return View("Profile");
                 }
                 else
                 {

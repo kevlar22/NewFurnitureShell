@@ -1,6 +1,8 @@
 ﻿using DotNetAppSqlDb.Models;
 using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.Entity.Core.EntityClient;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
@@ -16,13 +18,23 @@ namespace DotNetAppSqlDb.Controllers
         // GET: addresses
         public async System.Threading.Tasks.Task<ActionResult> Index(string id)
         {
-           
-            int zip = (int)Session["zip"];
-            int userID = (int)Session["userID"];
 
-            SqlParameter zipParameter = new SqlParameter("@Zipcode", zip);
-            SqlParameter myUserIdParameter = new SqlParameter("@myUserID", userID);
-            List<Matches> matches = await db.Matches.SqlQuery("MatchBuyertoSellers @Zipcode", zipParameter, "@myUserID", myUserIdParameter).ToListAsync();
+
+
+            int zip = Convert.ToInt32(Session["zip"]);
+
+            int userID = (int)Session["userID"];
+            db.Database.ExecuteSqlCommand(
+                "exec dbo.[MatchBuyertoSellers] @Zipcode,@myUserId",
+                  new SqlParameter("@Zipcode", zip),
+                  new SqlParameter("@myUserId", userID)
+                );
+            SqlParameter param1 = new SqlParameter("@UserID", userID);
+            List<Matches> matches =await db.Matches.SqlQuery("GetMatches @UserID", param1).ToListAsync();
+
+
+
+
 
             //var query = db.addresses
             //       .Where(a => a.User_ID == userID)

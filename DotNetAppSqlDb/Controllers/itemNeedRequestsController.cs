@@ -19,8 +19,8 @@ namespace DotNetAppSqlDb.Controllers
         {
             int userID = (int)Session["userID"];
             string userIDString = userID.ToString();
-            var query = db.ITEMS_FOR_SALE
-                       .Where(a => a.userID == userID)
+            var query = db.itemNeedRequests
+                       .Where(a => a.userId == userID)
                        .ToList();
             return View(query);
         }
