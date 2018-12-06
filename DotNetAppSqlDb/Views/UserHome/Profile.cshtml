@@ -17,7 +17,6 @@
 					Items to Sell
 				</div>
 				<div class="card-body">
-					<h4 class="card-title">Some Title...</h4>
 					<p class="card-text">Go to an overview of your items you want to sell</p>
 					<btn>@Html.ActionLink("Go to Items to Sell", "../itemsForSales/Index",
 						@Session["userID"], new {@class="btn btn-danger"})</btn>
@@ -29,9 +28,8 @@
 					Items to Buy
 				</div>
 				<div class="card-body">
-					<h4 class="card-title">Some Title...</h4>
 					<p class="card-text">Look for items that you can buy</p>
-					<btn class="btn btn-danger">@Html.ActionLink("Go to Items to Buy", "../itemNeedRequests/Index", 
+					<btn >@Html.ActionLink("Go to Items to Buy", "../itemNeedRequests/Index", 
 						@Session["userID"], new {@class="btn btn-danger"})</btn>
 				</div>
 			</div>
@@ -41,9 +39,8 @@
 					Your Location
 				</div>
 				<div class="card-body">
-					<h4 class="card-title">Some Title...</h4>
 					<p class="card-text">Go here to update your address</p>
-					<btn class="btn btn-danger">@Html.ActionLink("Go to My Address", "../addresses/Index", 
+					<btn>@Html.ActionLink("Go to My Address", "../addresses/Index", 
 						@Session["userID"], new {@class="btn btn-danger"})</btn>
 				</div>
 			</div>
@@ -52,9 +49,8 @@
 					Your Matches
 				</div>
 			<div class="card-body">
-				<h4 class="card-title">Some Title...</h4>
 				<p class="card-text">Check here to review your matches</p>
-				<btn class="btn btn-danger">@Html.ActionLink("Go to Matches", "../MatchBuyertoSellers_Result/Index", 
+				<btn>@Html.ActionLink("Go to Matches", "../MatchBuyertoSellers_Result/Index", 
 					@Session["userID"], new {@class="btn btn-danger"})</btn>
 			</div>
 			</br>

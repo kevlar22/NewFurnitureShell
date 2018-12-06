@@ -9,21 +9,20 @@
     <p>
         What Items do you Need?
     </p>
-    <table cellpadding="4" cellspacing="4">
-        <tr>
 
-            <th>
-                @Html.DisplayNameFor(model => model.category)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.minPrice)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.maxPrice)
-            </th>
-            <th></th>
-        </tr>
 
+
+
+	<table class="table table-hover table-light">
+		<thead>
+			<tr>
+				<th>Category</th>
+				<th>Minimum Price</th>
+				<th>Maximum Price</th>
+				<th></th>
+			</tr>
+		</thead>
+		</tbody>
         @foreach (var item in Model)
         {
             <tr>
@@ -42,8 +41,12 @@
                     @Html.ActionLink("Delete", "Delete", new { id = item.requestId })
                 </td>
             </tr>
-        }
+            <tr>
 
-    </table>
+            </tr>
+			}
+		</tbody>
+   </table>
+
     <btn>@Html.ActionLink("Back to Main Menu", "../UserHome/BacktoMenu", @Session["userID"])</btn>
 </body>
