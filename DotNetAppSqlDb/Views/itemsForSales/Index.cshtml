@@ -2,34 +2,38 @@
 @{	Layout = "~/Views/Shared/_Layout.cshtml ";	}
 @{	ViewBag.Title = "Index";	}
 <body>
-    <p>
-        @Html.ActionLink("Create New", "Create")
-    </p>
-    <br>
-    <p>
-        What items would you like to sell?
-    </p>
+	</br>
+	<div class="card-deck">	
+			<div class="card text-center">
+				<div class="card-body">
+					<h3 class="card-text">Choose an item below to sell, or create a new item.</h3>
+				</div>
+			</div>
+			<div class="card text-center">
+				<div class="card-body">
+					<p class="card-text">Need to add a new item?</p>
+					<btn>@Html.ActionLink("Create New", "Create", 
+						@Session["userID"], new {@class="btn btn-danger"})</btn>
+				</div>
+			</div>
+			</br>
+	</div>
 
     <br />
-    <table cellpadding="4" cellspacing="4">
-        <th>
-            @Html.DisplayNameFor(model => model.name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.price)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.description)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.image)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.category)
-        </th>
-        <th></th>
-        </tr>
 
+
+	<table class="table table-hover table-light">
+		<thead>
+			<tr>
+				<th>Item Name</th>
+				<th>Price</th>
+				<th>Description</th>
+				<th>Image</th>
+				<th>Category</th>
+				<th></th>
+			</tr>
+		</thead>
+		</tbody>
         @foreach (var item in Model)
         {
             <tr>
@@ -57,10 +61,14 @@
             </tr>
             <tr>
 
-               
             </tr>
-        }
+			}
+		</tbody>
+   </table>
 
-    </table>
+
+
+
+
     <btn>@Html.ActionLink("Back to Main Menu", "../UserHome/BacktoMenu", @Session["userID"])</btn>
 </body>
