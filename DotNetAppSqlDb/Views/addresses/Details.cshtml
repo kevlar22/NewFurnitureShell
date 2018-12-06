@@ -1,16 +1,6 @@
 ﻿@model DotNetAppSqlDb.Models.Address
-
-@{
-    Layout = null;
-}
-
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Details</title>
-</head>
+@{	Layout = "~/Views/Shared/_Layout.cshtml ";	}
+@{	ViewBag.Title = "Details";	}
 <body>
     <div>
         <h4>address</h4>
@@ -63,4 +53,3 @@
         @Html.ActionLink("Back to List", "Index")
     </p>
 </body>
-</html>

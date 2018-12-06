@@ -1,16 +1,30 @@
 ﻿@model DotNetAppSqlDb.Models.User
-@{
-    Layout = null;
-}
-
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>UserHome</title>
-</head>
+@{	Layout = "~/Views/Shared/_Layout.cshtml ";	}
+@{	ViewBag.Title = "Profile";	}
 <body>
+	</br>
+	<div class="alert alert-danger" role="alert">
+	<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+		<span aria-hidden="true">x</span>
+	</button>
+		<strong>Login Successful!</strong>
+	</div>
+
+	<div class="card text-center">
+		<div class="card-header">
+			Items to Sell
+		</div>
+		<div class="card-body">
+			<h4 class="card-title">Special title treatment</h4>
+			<p class="card-text">Go to an overview of your items you want to sell</p>=
+				<btn class="btn btn-danger">@Html.ActionLink("Go to Items to Sell", "../itemsForSales/Index",
+					@Session["userID"])</btn>
+		</div>
+		<div class="card-footer text-muted">
+			
+		</div>
+	</div>
+
     <div>
         Welcome  @Session["username"]
         <br />
@@ -27,4 +41,3 @@
         <btn>@Html.ActionLink("Matches:", "../MatchBuyertoSellers_Result/Index", @Session["userID"])</btn>
     </div>
 </body>
-</html>

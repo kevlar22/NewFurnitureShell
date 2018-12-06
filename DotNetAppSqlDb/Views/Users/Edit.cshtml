@@ -1,12 +1,8 @@
 ﻿@model DotNetAppSqlDb.Models.User
-
-@{
-    ViewBag.Title = "Edit";
-}
-
+@{	Layout = "~/Views/Shared/_Layout.cshtml ";	}
+@{	ViewBag.Title = "Edit";	}
+<body>
 <h2>Edit</h2>
-
-
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
@@ -56,3 +52,4 @@
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
+</body>

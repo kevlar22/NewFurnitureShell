@@ -1,16 +1,6 @@
 ﻿@model IEnumerable<DotNetAppSqlDb.Models.itemsForSale>
-
-@{
-    Layout = null;
-}
-
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
-</head>
+@{	Layout = "~/Views/Shared/_Layout.cshtml ";	}
+@{	ViewBag.Title = "Index";	}
 <body>
     <p>
         @Html.ActionLink("Create New", "Create")
@@ -74,4 +64,3 @@
     </table>
     <btn>@Html.ActionLink("Back to Main Menu", "../UserHome/BacktoMenu", @Session["userID"])</btn>
 </body>
-</html>

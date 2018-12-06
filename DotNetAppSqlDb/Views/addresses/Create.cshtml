@@ -1,17 +1,6 @@
 ﻿@model DotNetAppSqlDb.Models.Address
-  
-
-@{
-    Layout = null;
-}
-
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Create</title>
-</head>
+@{	Layout = "~/Views/Shared/_Layout.cshtml ";	}
+@{	ViewBag.Title = "Create";	}
 <body>
     @using (Html.BeginForm()) 
     {
@@ -75,4 +64,3 @@
         @Html.ActionLink("Back to List", "Index")
     </div>
 </body>
-</html>
