@@ -10,12 +10,14 @@
     <meta name="viewport" content="width=device-width" />
     <title>Login</title>
 </head>
-<body>
+<body style="background: #F0F0F0;">
+
+    <img style="display: flex;width: 60%;margin: 0 auto;" src="https://media.discordapp.net/attachments/485182896982851585/500391846321717307/Senditlogo.png" />
     
 
     @using (Html.BeginForm("UserProfile", "UserHome"))
     {
-    <table cellpadding="2" cellspacing="2">
+    <table style="display:flex;justify-content:center;align-items:center;width:50%;background:#a0f5a5;margin: 0 auto;border: 1px solid grey;" cellpadding="2" cellspacing="2">
         <tr>
             <td>@Html.LabelFor(Model => Model.userName)</td>
             <td>@Html.TextBoxFor(Model => Model.userName)</td>
