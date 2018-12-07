@@ -29,18 +29,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.image)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.buyerID)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.requestID)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.sellerID)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.itemID)
-            </th>
+          
             <th></th>
         </tr>
     
@@ -61,18 +50,8 @@
             <td>
                 @Html.DisplayFor(modelItem => item.image)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.buyerID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.requestID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.sellerID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.itemID)
-            </td>
+
+           
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id=item.matchID }) |
                 @Html.ActionLink("Details", "Details", new { id=item.matchID }) |

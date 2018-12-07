@@ -3,6 +3,23 @@
 @{
     Layout = null;
 }
+@{ WebImage photo = null;
+    var newFileName = "";
+    var imagePath = "";
+
+    if (IsPost)
+    {
+        photo = WebImage.GetImageFromRequest();
+        if (photo != null)
+        {
+            newFileName = Guid.NewGuid().ToString() + "_" +
+                Path.GetFileName(photo.FileName);
+            imagePath = @"images\" + newFileName;
+
+            photo.Save(@"~\" + imagePath);
+        }
+    }
+}
 
 <!DOCTYPE html>
 
@@ -12,7 +29,7 @@
     <title>Create</title>
 </head>
 <body>
-    @using (Html.BeginForm("Create", "itemsForSales", Session["userID"], FormMethod.Post, new { enctype = "multipart/form-data" }))
+    @using (Html.BeginForm())
 
 
     {
@@ -54,6 +71,7 @@
                     <div class="editor-label">
                         @Html.LabelFor(model => model.image)
                     </div>
+                   
                     <div class="editor-field">
                         <input id="ImagePath" title="Upload a product image"
                                type="file" name="file" />

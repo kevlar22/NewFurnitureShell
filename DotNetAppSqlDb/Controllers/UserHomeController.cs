@@ -27,6 +27,7 @@ namespace DotNetAppSqlDb.Controllers
             int userIDFromDatabase =-1;
             string sql = "SELECT ID FROM Users WHERE userName = @userName";
             string sqlConnection = ConfigurationManager.ConnectionStrings["MyDbConnection"].ConnectionString;
+            string p = null;
             using (SqlConnection conn = new SqlConnection(sqlConnection))
             {
                 SqlCommand cmd = new SqlCommand(sql, conn);
@@ -34,25 +35,7 @@ namespace DotNetAppSqlDb.Controllers
                 try
                 {
                     conn.Open();
-                     userIDFromDatabase = (int)cmd.ExecuteScalar();
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                }
-            }
-
-            string password = user.password;
-            string p = null;
-            string sqlpassword = "SELECT password FROM Users WHERE password = @password";
-            using (SqlConnection conn = new SqlConnection("Data Source=uncc.database.windows.net;Initial Catalog=uncc.Moving_App.dbo;Persist Security Info=True;User ID=kparso12;Password=Sugarrush1"))
-            {
-                SqlCommand cmd = new SqlCommand(sqlpassword, conn);
-                cmd.Parameters.AddWithValue("@password", password);
-                try
-                {
-                    conn.Open();
-                    p = (string)cmd.ExecuteScalar();
+                    userIDFromDatabase = (int)cmd.ExecuteScalar();
                 }
                 catch (Exception ex)
                 {
@@ -60,7 +43,20 @@ namespace DotNetAppSqlDb.Controllers
                 }
 
 
+                string password = user.password;
+                
+                string sqlpassword = "SELECT password FROM Users WHERE password = @password";
+
+
+                SqlCommand passCMD = new SqlCommand(sqlpassword, conn);
+                passCMD.Parameters.AddWithValue("@password", password);
+               
+                 p = (string)passCMD.ExecuteScalar();
+                
+                
+
             }
+            
 
             if (userIDFromDatabase != -1 && p != null)
                 {

@@ -162,6 +162,7 @@
     <Compile Include="Models\Matches.cs" />
     <Compile Include="Models\MyDatabaseContext.cs" />
     <Compile Include="Models\User.cs" />
+    <Compile Include="Models\userSession.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

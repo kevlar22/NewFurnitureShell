@@ -15,14 +15,16 @@ namespace DotNetAppSqlDb.Controllers
         private MyDatabaseContext db = new MyDatabaseContext();
 
         // GET: itemsForSales
-        public ActionResult Index(string userID)
+        public ActionResult Index(string id)
         {
-            
-            if ((userID != null) && (Session["userID"] == null))
-            {
-                Session["userID"] = userID;
-            }
-           
+            //if (Session["userID"]!= null)
+            //{
+            //    Response.Cookies["userID"].Value = Session["userID"].ToString();
+            //}
+            //if ((Session["userID"] == null))
+            //{
+            //    Session["userID"] = Response.Cookies["userID"].Value;
+            //}
            
 
               int idInt = Convert.ToInt32(Session["userID"]);
@@ -72,13 +74,13 @@ namespace DotNetAppSqlDb.Controllers
                 {
                     file.SaveAs(HttpContext.Server.MapPath("~/App_GlobalResources/Images/")
                                                                + file.FileName);
-                    itemsForSales.image = HttpContext.Server.MapPath("~/App_GlobalResources/Images/")
-                                                               + file.FileName.ToString();
+                    itemsForSales.image = file.FileName;
                 }
                 itemsForSales.userID = (int)Session["userID"];
                 db.ITEMS_FOR_SALEs.Add(itemsForSales);
                 db.SaveChanges();
-                return RedirectToAction("Index", itemsForSales.userID.ToString());
+              
+                return RedirectToAction("Index", "UserHome");
                 
                 
             }
@@ -111,7 +113,7 @@ namespace DotNetAppSqlDb.Controllers
                 itemsForSale.userID = (int)Session["userID"];
                 db.Entry(itemsForSale).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index", itemsForSale.userID.ToString());
+                return RedirectToAction("Index");
             }
             return View(itemsForSale);
         }
