@@ -11,6 +11,7 @@ namespace DotNetAppSqlDb.Migrations
         {
             AutomaticMigrationsEnabled = true;
             ContextKey = "DotNetAppSqlDb.Models.MyDatabaseContext";
+
         }
 
         protected override void Seed(DotNetAppSqlDb.Models.MyDatabaseContext context)

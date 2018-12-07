@@ -21,15 +21,16 @@ namespace DotNetAppSqlDb.Controllers
 
 
 
-            int zip = Convert.ToInt32(Session["zip"]);
+            //int zip = Convert.ToInt32(Session["zip"]);
 
-            int userID = (int)Session["userID"];
-            db.Database.ExecuteSqlCommand(
-                "exec dbo.[MatchBuyertoSellers] @Zipcode,@myUserId",
-                  new SqlParameter("@Zipcode", zip),
-                  new SqlParameter("@myUserId", userID)
-                );
+            int userID = Convert.ToInt32(Session["userID"]);
             SqlParameter param1 = new SqlParameter("@UserID", userID);
+            db.Database.ExecuteSqlCommand(
+                "exec dbo.[MatchBuyertoSellers] @UserId", param1
+           
+                  
+                );
+            
             List<Matches> matches =await db.Matches.SqlQuery("GetMatches @UserID", param1).ToListAsync();
 
 

@@ -18,7 +18,7 @@ namespace DotNetAppSqlDb.Controllers
         // GET: addresses
         public async System.Threading.Tasks.Task<ActionResult> Index(string id)
         {
-          int userID = (int)Session["userID"];
+          int userID = Convert.ToInt32(Session["userID"]);;
 
 
 

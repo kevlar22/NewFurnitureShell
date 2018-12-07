@@ -22,7 +22,7 @@
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-        @*@{ Model.userID = (int)Session["userID"]; }*@
+        @*@{ Model.userID = Convert.ToInt32(Session["userID"]);; }*@
         <div class="form-group">
             @Html.LabelFor(model => model.Street, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">

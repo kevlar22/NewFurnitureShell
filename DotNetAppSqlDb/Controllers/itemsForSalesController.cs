@@ -72,18 +72,19 @@ namespace DotNetAppSqlDb.Controllers
             {
                 if (file != null)
                 {
-                    file.SaveAs(HttpContext.Server.MapPath("~/App_GlobalResources/Images/")
+                    file.SaveAs(HttpContext.Server.MapPath("~/Images/")
                                                                + file.FileName);
-                    itemsForSales.image = file.FileName;
+                    itemsForSales.image = ("/Images/" +  file.FileName + "").ToString();
                 }
-                itemsForSales.userID = (int)Session["userID"];
+                itemsForSales.userID = Convert.ToInt32(Session["userID"]);;
                 db.ITEMS_FOR_SALEs.Add(itemsForSales);
                 db.SaveChanges();
-              
-                return RedirectToAction("Index", "UserHome");
+                
+                return RedirectToAction("Index", "itemsForSales", Session["userID"] = itemsForSales.userID.ToString());
                 
                 
             }
+           
             return View(itemsForSales);
 
         }
@@ -110,7 +111,7 @@ namespace DotNetAppSqlDb.Controllers
         {
             if (ModelState.IsValid)
             {
-                itemsForSale.userID = (int)Session["userID"];
+                itemsForSale.userID = Convert.ToInt32(Session["userID"]);;
                 db.Entry(itemsForSale).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

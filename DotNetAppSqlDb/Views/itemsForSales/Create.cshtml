@@ -29,7 +29,8 @@
     <title>Create</title>
 </head>
 <body>
-    @using (Html.BeginForm())
+    @using (Html.BeginForm("Create", "itemsForSales", null, FormMethod.Post,
+                              new { enctype = "multipart/form-data" }))
 
 
     {
@@ -71,7 +72,7 @@
                     <div class="editor-label">
                         @Html.LabelFor(model => model.image)
                     </div>
-                   
+
                     <div class="editor-field">
                         <input id="ImagePath" title="Upload a product image"
                                type="file" name="file" />

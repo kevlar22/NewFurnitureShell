@@ -56,7 +56,7 @@
                 </td>
                 <td>
                     @*@Html.DisplayFor(modelItem => item.image)*@
-                     <img src="@item.image" alt="Not Posted" />
+                     <img src="@item.image" alt="Not Posted" style='height: 100%; width: 100%; object-fit: scale-down' />
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.category)
@@ -71,6 +71,6 @@
         }
 
     </table>
-    <btn>@Html.ActionLink("Back to Main Menu", "../UserHome/BacktoMenu", @Session["userID"])</btn>
+    
 </body>
 </html>

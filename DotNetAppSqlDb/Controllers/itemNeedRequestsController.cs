@@ -17,7 +17,7 @@ namespace DotNetAppSqlDb.Controllers
         // GET: itemNeedRequests
         public ActionResult Index()
         {
-            int userID = (int)Session["userID"];
+            int userID = Convert.ToInt32(Session["userID"]);
             string userIDString = userID.ToString();
             var query = db.itemNeedRequests
                        .Where(a => a.userId == userID)
@@ -55,7 +55,7 @@ namespace DotNetAppSqlDb.Controllers
         {
             if (ModelState.IsValid)
             {
-                itemNeedRequests.userId = (int)Session["userID"];
+                itemNeedRequests.userId = Convert.ToInt32(Session["userID"]);;
                 db.itemNeedRequests.Add(itemNeedRequests);
                 db.SaveChanges();
                 return RedirectToAction("Index");
