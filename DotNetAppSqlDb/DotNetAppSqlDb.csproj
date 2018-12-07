@@ -275,6 +275,8 @@
     <Content Include="Views\addresses\Edit.cshtml" />
     <Content Include="Views\addresses\Index.cshtml" />
     <Content Include="Views\Matches\Index.cshtml" />
+    <Content Include="Views\Matches\AddToCart.cshtml" />
+    <Content Include="Views\Shared\LoginNav.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Code\" />

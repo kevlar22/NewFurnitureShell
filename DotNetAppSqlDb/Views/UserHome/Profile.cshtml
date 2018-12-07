@@ -1,30 +1,67 @@
 ﻿@model DotNetAppSqlDb.Models.User
-@{
-    Layout = null;
-}
-
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>UserHome</title>
-</head>
+@{ Layout = "~/Views/Shared/_Layout.cshtml "; }
+@{ ViewBag.Title = "Profile"; }
 <body>
-    <div>
-        Welcome  @Session["username"]
-        <br />
-        Main Menu:
-        <br />
-        <p>@Session["userID"]</p>
-        <br />
-        <btn>@Html.ActionLink("Items to Sell:", "../itemsForSales/Index", @Session["userID"].ToString())</btn>
-        <br />
-        <btn>@Html.ActionLink("Items I want to buy:", "../itemNeedRequests/Index", @Session["userID"])</btn>
-        <br />
-        <btn>@Html.ActionLink("My Address:", "../addresses/Index", @Session["userID"])</btn>
-        <br />
-        <btn>@Html.ActionLink("Matches:", "../Matches/Index", @Session["userID"])</btn>
+    </br>
+    <div class="alert alert-danger" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">x</span>
+        </button>
+        <strong>Welcome  @Session["username"]!</strong>
     </div>
+    <br />
+    <div class="card-deck">
+
+        <div class="card text-center">
+            <div class="card-header">
+                Items to Sell
+            </div>
+            <div class="card-body">
+                <p class="card-text">Go to an overview of your items you want to sell</p>
+                <btn>
+                    @Html.ActionLink("Go to Items to Sell", "../itemsForSales/Index",
+               @Session["userID"], new {@class="btn btn-danger"})
+            </btn>
+        </div>
+    </div>
+
+    <div class="card text-center">
+        <div class="card-header">
+            Items to Buy
+        </div>
+        <div class="card-body">
+            <p class="card-text">Look for items that you can buy</p>
+            <btn>
+                @Html.ActionLink("Go to Items to Buy", "../itemNeedRequests/Index",
+          @Session["userID"], new {@class="btn btn-danger"})
+        </btn>
+    </div>
+</div>
+
+<div class="card text-center">
+    <div class="card-header">
+        Your Location
+    </div>
+    <div class="card-body">
+        <p class="card-text">Go here to update your address</p>
+        <btn>
+            @Html.ActionLink("Go to My Address", "../addresses/Index",
+       @Session["userID"], new {@class="btn btn-danger"})
+    </btn>
+</div>
+</div>
+<div class="card text-center">
+    <div class="card-header">
+        Your Matches
+    </div>
+    <div class="card-body">
+        <p class="card-text">Check here to review your matches</p>
+        <btn>
+            @Html.ActionLink("Go to Matches", "../matches/Index",
+       @Session["userID"], new {@class="btn btn-danger"})
+    </btn>
+</div>
+			</br>
+</div>
+	</br>
 </body>
-</html>

@@ -1,8 +1,7 @@
-﻿@model DotNetAppSqlDb.Models.itemsForSale
-
-@{
-    Layout = null;
-}
+﻿
+@model DotNetAppSqlDb.Models.itemsForSale
+@{ Layout = "~/Views/Shared/_Layout.cshtml "; }
+@{ ViewBag.Title = "Create"; }
 @{ WebImage photo = null;
     var newFileName = "";
     var imagePath = "";
@@ -21,13 +20,6 @@
     }
 }
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Create</title>
-</head>
 <body>
     @using (Html.BeginForm("Create", "itemsForSales", null, FormMethod.Post,
                               new { enctype = "multipart/form-data" }))
@@ -77,9 +69,6 @@
                         <input id="ImagePath" title="Upload a product image"
                                type="file" name="file" />
                     </div>
-                    <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="Create" class="btn btn-default" />
-                    </div>
 
                 </div>
 
@@ -107,4 +96,3 @@
         @Scripts.Render("~/bundles/jqueryval")
     }
 </body>
-</html>

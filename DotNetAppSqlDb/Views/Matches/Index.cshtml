@@ -1,16 +1,7 @@
 ﻿@model IEnumerable<DotNetAppSqlDb.Models.Matches>
+@{ Layout = "~/Views/Shared/_Layout.cshtml "; }
 
-@{
-    Layout = null;
-}
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
-</head>
 <body>
     <table class="table">
         <tr>
@@ -35,28 +26,29 @@
 
         @foreach (var item in Model)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.sellerName)
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.sellerName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.itemForSaleName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.salePrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.sellingCategory)
+            </td>
+            <td>
+                @*@Html.DisplayFor(modelItem => item.image)*@
+                <img src="@item.image" alt="Not Posted" style='height: 50%; width: 50%; object-fit: contain' />
+            </td>
+            <td>
+            @Html.ActionLink("Add to Cart", "Index", new { id = item.matchID}) 
                 </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.itemForSaleName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.salePrice)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.sellingCategory)
-                </td>
-                <td>
-                    @*@Html.DisplayFor(modelItem => item.image)*@
-                    <img src="@item.image" alt="Not Posted" style='height: 100%; width: 100%; object-fit: contain' />
-                </td>
-
-            </tr>
+        </tr>
         }
 
     </table>
     <btn>@Html.ActionLink("Back to Main Menu", "../UserHome/BacktoMenu", @Session["userID"])</btn>
 </body>
-</html>
