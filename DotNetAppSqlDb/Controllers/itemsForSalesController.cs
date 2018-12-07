@@ -15,13 +15,22 @@ namespace DotNetAppSqlDb.Controllers
         private MyDatabaseContext db = new MyDatabaseContext();
 
         // GET: itemsForSales
-        public ActionResult Index()
+        public ActionResult Index(string userID)
         {
-            int userID = (int)Session["userID"];
-            string userIDString = userID.ToString();
+            
+            if ((userID != null) && (Session["userID"] == null))
+            {
+                Session["userID"] = userID;
+            }
+           
+           
+
+              int idInt = Convert.ToInt32(Session["userID"]);
+           
             var query = db.ITEMS_FOR_SALEs
-                       .Where(a => a.userID == userID)
+                       .Where(a => a.userID == idInt)
                        .ToList();
+           
             return View(query);
             
         }
@@ -53,18 +62,28 @@ namespace DotNetAppSqlDb.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "itemID, userID, category,price,name,description,image")] itemsForSale itemsForSales)
+        public ActionResult Create([Bind(Include = "itemID, userID, category,price,name,description,image")] itemsForSale itemsForSales, HttpPostedFileBase file)
             
         {
+            
             if (ModelState.IsValid)
             {
+                if (file != null)
+                {
+                    file.SaveAs(HttpContext.Server.MapPath("~/App_GlobalResources/Images/")
+                                                               + file.FileName);
+                    itemsForSales.image = HttpContext.Server.MapPath("~/App_GlobalResources/Images/")
+                                                               + file.FileName.ToString();
+                }
                 itemsForSales.userID = (int)Session["userID"];
                 db.ITEMS_FOR_SALEs.Add(itemsForSales);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", itemsForSales.userID.ToString());
+                
+                
             }
-
             return View(itemsForSales);
+
         }
 
         // GET: itemsForSales/Edit/5
@@ -92,7 +111,7 @@ namespace DotNetAppSqlDb.Controllers
                 itemsForSale.userID = (int)Session["userID"];
                 db.Entry(itemsForSale).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", itemsForSale.userID.ToString());
             }
             return View(itemsForSale);
         }
@@ -123,13 +142,6 @@ namespace DotNetAppSqlDb.Controllers
             return RedirectToAction("Index");
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
+       
     }
 }

@@ -2,7 +2,9 @@
 
 @{
     Layout = null;
+
 }
+
 
 <!DOCTYPE html>
 
@@ -37,8 +39,7 @@
         <th>
             @Html.DisplayNameFor(model => model.category)
         </th>
-        <th></th>
-        </tr>
+       
 
         @foreach (var item in Model)
         {
@@ -54,7 +55,11 @@
                     @Html.DisplayFor(modelItem => item.description)
                 </td>
                 <td>
+
+
                     @Html.DisplayFor(modelItem => item.image)
+
+
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.category)

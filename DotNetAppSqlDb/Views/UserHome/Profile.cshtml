@@ -16,9 +16,9 @@
         <br />
         Main Menu:
         <br />
-
+        <p>@Session["userID"]</p>
         <br />
-        <btn>@Html.ActionLink("Items to Sell:", "../itemsForSales/Index", @Session["userID"])</btn>
+        <btn>@Html.ActionLink("Items to Sell:", "../itemsForSales/Index", @Session["userID"].ToString())</btn>
         <br />
         <btn>@Html.ActionLink("Items I want to buy:", "../itemNeedRequests/Index", @Session["userID"])</btn>
         <br />
